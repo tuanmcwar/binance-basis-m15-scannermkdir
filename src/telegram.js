@@ -22,10 +22,10 @@ function getCaption(symbol, strategy) {
   const timeframe = config.TIMEFRAME.toUpperCase();
 
   if (strategy === "EXTREME") {
-    return `💰${symbol}.P || BASIS PUMP ${timeframe}`;
+    return `💰 ${symbol}.P || BASIS PUMP ${timeframe}`;
   }
 
-  return `💰${symbol}.P || FUTURES VS INDEX ${timeframe}`;
+  return `💰 ${symbol}.P || FUTURES VS INDEX ${timeframe}`;
 }
 
 // ==========================================

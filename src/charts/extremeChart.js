@@ -1,6 +1,7 @@
 import { createCanvas } from "@napi-rs/canvas";
 import { config } from "../config.js";
 import { getFundingRate } from "../funding.js";
+import { FONT_FAMILY } from "../fonts.js";
 
 // ========================================
 // COLORS
@@ -230,7 +231,7 @@ export function createExtremeChart(
 
   ctx.fillStyle = COLORS.index;
 
-  ctx.font = "bold 32px sans-serif";
+  ctx.font = `bold 32px "${FONT_FAMILY}"`;
 
   ctx.fillText(
     `${symbol}.P - BASIS PUMP ${config.TIMEFRAME.toUpperCase()}`,
@@ -270,7 +271,7 @@ export function createExtremeChart(
     }
   ];
 
-  ctx.font = "18px sans-serif";
+  ctx.font = `18px "${FONT_FAMILY}"`;
 
   const legendWidths = legends.map(item =>
 
@@ -318,7 +319,7 @@ export function createExtremeChart(
   // PRICE LABELS - NO HORIZONTAL GRID
   // ========================================
 
-  ctx.font = "13px sans-serif";
+  ctx.font = `13px "${FONT_FAMILY}"`;
 
   for (let i = 0; i <= 6; i++) {
 
@@ -430,7 +431,7 @@ export function createExtremeChart(
 
   ctx.save();
 
-  ctx.font = "bold 15px sans-serif";
+  ctx.font = `bold 15px "${FONT_FAMILY}"`;
 
   ctx.textAlign = "center";
 
@@ -552,7 +553,7 @@ export function createExtremeChart(
 
   const latest = candles.at(-1);
 
-  ctx.font = "bold 28px sans-serif";
+  ctx.font = `bold 28px "${FONT_FAMILY}"`;
 
   ctx.textAlign = "center";
 
@@ -654,7 +655,7 @@ export function createExtremeChart(
 
     ctx.globalAlpha = 0.2;
 
-    ctx.font = "bold 13px sans-serif";
+    ctx.font = `bold 13px "${FONT_FAMILY}"`;
 
     ctx.fillStyle = COLORS.text;
 
@@ -701,7 +702,7 @@ export function createExtremeChart(
 
     ctx.stroke();
 
-    ctx.font = "12px sans-serif";
+    ctx.font = `12px "${FONT_FAMILY}"`;
 
     ctx.textAlign = "right";
 
@@ -740,7 +741,7 @@ export function createExtremeChart(
         !Number.isFinite(value)
       ) {
 
-        ctx.font = "12px sans-serif";
+        ctx.font = `12px "${FONT_FAMILY}"`;
 
         ctx.textAlign = "center";
 
@@ -807,7 +808,7 @@ export function createExtremeChart(
       const label =
         `${value > 0 ? "+" : ""}${value.toFixed(fundingDecimals)}%`;
 
-      ctx.font = "bold 12px sans-serif";
+      ctx.font = `bold 12px "${FONT_FAMILY}"`;
 
       ctx.textAlign = "center";
 
@@ -850,7 +851,7 @@ export function createExtremeChart(
     // FUNDING RUNNING CANDLE
     // ========================================
 
-    ctx.font = "bold 20px sans-serif";
+    ctx.font = `bold 20px "${FONT_FAMILY}"`;
 
     ctx.textAlign = "center";
 
@@ -869,7 +870,7 @@ export function createExtremeChart(
   // TIME LABELS INSIDE BOTTOM GRID
   // ========================================
 
-  ctx.font = "12px sans-serif";
+  ctx.font = `12px "${FONT_FAMILY}"`;
 
   ctx.textAlign = "center";
 
@@ -898,7 +899,7 @@ export function createExtremeChart(
   // PRICE AXIS TITLE
   // ========================================
 
-  ctx.font = "13px sans-serif";
+  ctx.font = `13px "${FONT_FAMILY}"`;
 
   ctx.fillStyle = COLORS.text;
 
