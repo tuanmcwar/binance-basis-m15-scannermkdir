@@ -80,11 +80,21 @@ export const config = {
   BASIS_EXTREME_ENABLED:
     bool("BASIS_EXTREME_ENABLED", true),
 
+  // POSITIVE BASIS
+
   BASIS_POSITIVE_THRESHOLD:
-    num("BASIS_POSITIVE_THRESHOLD", 5),
+    num("BASIS_POSITIVE_THRESHOLD", 2),
+
+  BASIS_POSITIVE_RESET_PERCENT:
+    num("BASIS_POSITIVE_RESET_PERCENT", 1),
+
+  // NEGATIVE BASIS
 
   BASIS_NEGATIVE_THRESHOLD:
     num("BASIS_NEGATIVE_THRESHOLD", -5),
+
+  BASIS_NEGATIVE_RESET_PERCENT:
+    num("BASIS_NEGATIVE_RESET_PERCENT", 2),
 
   // ========================================
   // SCANNER
@@ -287,15 +297,45 @@ if (config.BASIS_RECOVERY_ENABLED) {
 
 if (config.BASIS_EXTREME_ENABLED) {
 
+  // POSITIVE THRESHOLD
+
   if (config.BASIS_POSITIVE_THRESHOLD <= 0) {
     throw new Error(
       "BASIS_POSITIVE_THRESHOLD phải lớn hơn 0"
     );
   }
 
+  // NEGATIVE THRESHOLD
+
   if (config.BASIS_NEGATIVE_THRESHOLD >= 0) {
     throw new Error(
       "BASIS_NEGATIVE_THRESHOLD phải bé hơn 0"
+    );
+  }
+
+  // POSITIVE RESET
+
+  if (
+    config.BASIS_POSITIVE_RESET_PERCENT <= 0 ||
+
+    config.BASIS_POSITIVE_RESET_PERCENT >=
+      config.BASIS_POSITIVE_THRESHOLD
+  ) {
+    throw new Error(
+      "BASIS_POSITIVE_RESET_PERCENT không hợp lệ"
+    );
+  }
+
+  // NEGATIVE RESET
+
+  if (
+    config.BASIS_NEGATIVE_RESET_PERCENT <= 0 ||
+
+    config.BASIS_NEGATIVE_RESET_PERCENT >=
+      Math.abs(config.BASIS_NEGATIVE_THRESHOLD)
+  ) {
+    throw new Error(
+      "BASIS_NEGATIVE_RESET_PERCENT không hợp lệ"
     );
   }
 }
